@@ -78,7 +78,7 @@ public class StudyImage extends AppCompatActivity {
         final AlertDialog.Builder alterDiaglog = new AlertDialog.Builder(StudyImage.this);
         alterDiaglog.setIcon(R.drawable.user);//图标
         alterDiaglog.setTitle("开发者：QCuncle");//文字
-        alterDiaglog.setMessage("version 1.0");//提示消息
+        alterDiaglog.setMessage("version 1.1\n      若未跳转到学习截图，请检查链接是否输入正确。有问题请到GitHub提交issue");//提示消息
         //积极的选择
         alterDiaglog.setPositiveButton("更新github@qcuncle", new DialogInterface.OnClickListener() {
             @Override

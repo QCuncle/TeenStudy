@@ -27,7 +27,8 @@
         android:gravity="center_vertical"
         android:textColor="#000000"
         android:text="“青年大学习”"
-        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textSize="17dp"
         tools:ignore="RtlCompat" />
 
     <TextView

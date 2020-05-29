@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 //跳转到大学习界面
                 if(jishu.length()==0 || qishu.length()==0 ){
                     Toast.makeText(getApplicationContext(), "请输入季数和期数", Toast.LENGTH_LONG).show();
-                }else if(path.length()<35 || path.length()>80){
+                }else if(!path.startsWith("http://h5.cyol.com/special/daxuexi") || !path.endsWith("m.html")){
                     Toast.makeText(getApplicationContext(), "请查看链接是否输入正确", Toast.LENGTH_LONG).show();
                 }else{
                 Intent intent=new Intent(MainActivity.this,StudyImage.class);
