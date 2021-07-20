@@ -11,9 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText et1,et2,et3;
+    private EditText et1, et2, et3;
     private Button studyBtn;
-    public static String jishu,qishu,path;
+    public static String jishu, qishu, path;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,14 +38,14 @@ public class MainActivity extends AppCompatActivity {
                 qishu = et2.getText().toString();
                 path = et3.getText().toString().trim();
                 //跳转到大学习界面
-                if(jishu.length()==0 || qishu.length()==0 ){
+                if (jishu.length() == 0 || qishu.length() == 0) {
                     Toast.makeText(getApplicationContext(), "请输入季数和期数", Toast.LENGTH_LONG).show();
-                }else if(!path.startsWith("http://h5.cyol.com/special/daxuexi") || !path.endsWith("m.html")){
+                } else if (!path.startsWith("http:")) {
                     Toast.makeText(getApplicationContext(), "请查看链接是否输入正确", Toast.LENGTH_LONG).show();
-                }else{
-                Intent intent=new Intent(MainActivity.this,StudyImage.class);
-                startActivity(intent);
-                //MainActivity.this.finish();
+                } else {
+                    Intent intent = new Intent(MainActivity.this, StudyImage.class);
+                    startActivity(intent);
+                    //MainActivity.this.finish();
                 }
             }
         });
