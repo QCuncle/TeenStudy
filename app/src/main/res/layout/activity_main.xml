@@ -17,14 +17,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="105dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/user"
-            tools:ignore="VectorDrawableCompat" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,17 +81,17 @@
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="请将微信公众号中青年大学习地址粘贴到下方↓"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="请将微信公众号中青年大学习地址粘贴到下方↓" />
 
 
                 <EditText
                     android:id="@+id/study_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="50px"
                     android:ems="100"
-                    android:inputType="textPostalAddress"
-                    android:layout_marginTop="50px"/>
+                    android:inputType="textPostalAddress" />
 
                 <TableRow
                     android:layout_width="match_parent"

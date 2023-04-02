@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Teen Study</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_screenshot">ScreenshotActivity</string>
 </resources>
