@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
 import com.qcuncle.teenstudy.config.Extra
 import com.qcuncle.teenstudy.ui.theme.TeenStudyTheme
@@ -35,7 +36,7 @@ class ScreenshotActivity : ComponentActivity() {
         setContent {
             TeenStudyTheme {
                 // 在主题内设置自定义状态栏
-                ImmersionStatusBar(background = MaterialTheme.colors.background) {
+                ImmersionStatusBar(background = Color(237, 237, 237)) {
                     val isShow = remember { mutableStateOf(false) }
                     Column {
                         TeenStudyToolBar(

@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class HomeActivity : ComponentActivity() {
-    private val startStr = "http:"
+    private val startStr = "http"
     private val endStr = "m.html"
     private val imgStr = "images/end.jpg"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,11 +57,9 @@ class HomeActivity : ComponentActivity() {
                         onClick = {
                             if (website.value.isBlank()) {
                                 this@HomeActivity.showToast("请先输入学习地址")
-                            } else if (!website.value.startsWith(startStr)
-                                && !website.value.endsWith(endStr)
+                            } else if (website.value.startsWith(startStr)
+                                && website.value.endsWith(endStr)
                             ) {
-                                this@HomeActivity.showToast("请检查地址是否输入正确")
-                            } else {
                                 // 图片地址
                                 val imgUrl = website.value.replace(endStr, imgStr)
                                 CoroutineScope(Dispatchers.Main).launch {
@@ -79,6 +77,8 @@ class HomeActivity : ComponentActivity() {
                                         jumpToScreenshot(title, imgUrl)
                                     }
                                 }
+                            } else {
+                                this@HomeActivity.showToast("请检查地址是否输入正确")
                             }
                         }, modifier = Modifier.padding(36.dp), shape = CircleShape
                     ) {
