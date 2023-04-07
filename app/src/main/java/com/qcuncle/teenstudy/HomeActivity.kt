@@ -24,7 +24,6 @@ import com.qcuncle.teenstudy.util.showToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class HomeActivity : ComponentActivity() {
     private val startStr = "http"
