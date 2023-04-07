@@ -6,7 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -54,38 +56,40 @@ class HomeActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxWidth().padding(36.dp, 16.dp)
                     )
                     Button(
-                        onClick = {
-                            if (website.value.isBlank()) {
-                                this@HomeActivity.showToast("请先输入学习地址")
-                            } else if (website.value.startsWith(startStr)
-                                && website.value.endsWith(endStr)
-                            ) {
-                                // 图片地址
-                                val imgUrl = website.value.replace(endStr, imgStr)
-                                CoroutineScope(Dispatchers.Main).launch {
-                                    // 获取网站的html内容
-                                    val htmlBody: String? = HtmlImpl().getHtmlBody(website.value)
-                                    // 获取网站标题
-                                    withContext(Dispatchers.Main) {
-                                        val result: String = if (htmlBody.isNullOrEmpty()) {
-                                            this@HomeActivity.showToast("获取青年大学习标题失败")
-                                            ""
-                                        } else {
-                                            htmlBody.replace("\r\n|\r|\n".toRegex(), "")
-                                        }
-                                        val title = HtmlUtil.getTitle(result)
-                                        jumpToScreenshot(title, imgUrl)
-                                    }
-                                }
-                            } else {
-                                this@HomeActivity.showToast("请检查地址是否输入正确")
-                            }
-                        }, modifier = Modifier.padding(36.dp), shape = CircleShape
+                        onClick = { onBtnClick(website.value) },
+                        modifier = Modifier.padding(36.dp), shape = CircleShape
                     ) {
                         Text(text = "进入进入~", modifier = Modifier.padding(4.dp))
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * 点击进入学习
+     */
+    private fun onBtnClick(url: String?) {
+        if (url.isNullOrBlank()) {
+            this@HomeActivity.showToast("请先输入学习地址")
+        } else if (url.startsWith(startStr) && url.endsWith(endStr)) {
+            // 图片地址
+            val imgUrl = url.replace(endStr, imgStr)
+            CoroutineScope(Dispatchers.Main).launch {
+                // 获取网站的html内容
+                val htmlBody: String? = HtmlImpl().getHtmlBody(url)
+                // 获取网站标题
+                val result: String = if (htmlBody.isNullOrEmpty()) {
+                    this@HomeActivity.showToast("获取青年大学习标题失败")
+                    ""
+                } else {
+                    htmlBody.replace("\r\n|\r|\n".toRegex(), "")
+                }
+                val title = HtmlUtil.getTitle(result)
+                jumpToScreenshot(title, imgUrl)
+            }
+        } else {
+            this@HomeActivity.showToast("请检查地址是否输入正确")
         }
     }
 
